@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,500,700,900&display=swap&subset=japanese" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:500,700,900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon-16x16.png" type="image/x-icon">
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <div id="container" class="container pointer-event-none">
+        <div class="tomato-container">
+            <img id="tomato" class="visibility-hidden" src="images/tomato.png" alt="赤トマト">
+            <p id="timer" class="timer visibility-hidden">25:00.000</p>
+            <div class="circle-box">
+                <div id="circle1" class="circle1 padding-0"></div>
+                <div id="circle2" class="circle2 padding-0"></div>
+                <canvas id="timer-circle-canvas"></canvas>
+            </div>
+        </div>
+        <div class="circle3-container">
+            <div id="circle3-box" class="circle3-box hide-white">
+                <div id="circle3" class="circle3 circle3-non-move"></div>
+            </div>
+        </div>
+        <p id="status" class="status hide-status d-8">Let's start</p>
+        <div id="menu-status" class="menu-status d-3 hide-menu-status">
+            <p id="ms-about" class="ms-about hide-contents">about</p>
+            <p id="ms-how-to-use" class="ms-how-to-use hide-contents">how to use</p>
+            <p id="ms-set-count" class="ms-set-count hide-contents">set count</p>
+            <p id="ms-alarm" class="ms-alarm hide-contents">alarm</p>
+        </div>
+        <!-- <p id="menu-status" class="menu-status d-3 hide-menu-status"></p> -->
+        <p id="status-sub-text" class="status-sub-text hide-status-sub d-8">Not do my best tomorrow. Today...just do my best today. For those who worked<br> hard today, only started hard today, Tomorrow will come.</p>
+        <div class="button-container">
+            <button type="button" class="fas hide-contents" id="start-stop-btn">&#xf04b;</button>
+            <div class="btn-text-box">
+                <div id="btn-text-under-line" class="btn-text-under-line hide-btn-text-under-line d-8"></div>
+                <p id="btn-text" class="btn-text hide-btn-text d-8">START BUTTON</p>
+            </div>
+            <div class="hide-line-box">
+                <div id="hide-line" class="hide-line hide-line-hide d-8"></div>
+            </div>
+        </div>
+        <div id="button-container-back" class="button-container-back d-8 hide-btn-container"></div>
+        <div id="set-container">
+            <div class="count-container">
+                <div id="count-container-bottom-line" class="count-container-bottom-line hide-cc-bottom-line d-8"></div>
+                <div id="count-container-left-line" class="count-container-left-line hide-cc-left-line d-8"></div>
+                <p id="set-count" class="set-count hide-set-count d-8">00</p>
+            </div>
+        </div>
+        <div id="set-container-back" class="set-container-back hide-set-container-back d-8"></div>
+        <div id="left-top-title" class="left-top-title d-8">
+            <div class="title-box">
+                <p id="title" class="title hide-title">POMO<br>DORO<br>TIMER</p>
+            </div>
+        </div>
+        <div id="left-top-title-back" class="left-top-title-back hide-title-back d-8"></div>
+        <div class="left-line-box">
+            <div id="left-line" class="left-line hide-left-line d-8"></div>
+        </div>
+        <div class="my-num-box">
+            <p id="my-num" class="my-num hide-my-num d-8">01</p>
+        </div>
+        <div class="menu-container">
+            <p id="about" class="about hide-menu d-8">about</p>
+            <div class="about-back"></div>
+            <p id="how-to-use" class="how-to-use hide-menu d-8">how to use</p>
+            <div class="how-to-use-back"></div>
+            <p id="set-count-menu" class="set-count-menu hide-menu d-8">set count</p>
+            <div class="set-count-menu-back"></div>
+            <p id="alarm" class="alarm hide-menu d-8">alarm</p>
+            <div class="alarm-back"></div>
+            <p id="dark-theme" class="dark-theme hide-menu d-8">dark theme</p>
+            <div class="dark-theme-back"></div>
+        </div>
+        <div id="about-container" class="about-container hide-contents">
+            <h1 class="about-h1">ポモドーロとは</h1>
+            <p class="about-text">「ポモドーロ・テクニック」。これは、25分の集中と5分の休憩を繰り返すというもの。作家のフランチェスコ・シリロによって考案されたもので、「ポモドーロ」という名前は彼が学生時代に愛用していたトマト型のキッチンタイマーにちなんでつけられたそうです。その方法論はシンプルで、取り組むべきタスクを短い時間単位に分割し、5分間の休憩を挟みながら処理していくだけ。時間をかけずに集中状態に入るための訓練にもなり、続けていけば、注意力や集中力も強化されます。集中する時間を区切り、「もう少しやりたかった」というところで休憩に入ることで、集中力を高める狙いです。作業に飽きる前に休憩することで、再会したときもスムーズに集中状態に入ることができます。</p>
+            <a href="https://www.amazon.co.jp/dp/4761271760" target="_blank">引用：自分を操る超集中力</a>
+        </div>
+        <div id="how-to-use-container" class="how-to-use-container hide-contents">
+            <h1 class="how-to-use-h1">使い方</h1>
+            <p class="how-to-use-text">再生ボタンを押すとタイマーがスタートし、25分間かけて赤い円が一周します。この間はタスクをこなしましょう。25分経つとアラームが鳴り、全体が緑色になります。緑色は休憩の合図です。トイレに行ったり、体を軽く動かすなどして休憩しましょう。5分経つとタイマーが鳴り、再び全体が赤色になって25分タイマーが始まります。タスクが片付くまで基本的にこの繰り返しです。右上のテキストはステータス（状態）を、右下の数字はセット数を表しています。ポモドーロの紹介については「about」を、セット数をあらかじめ指定したい場合は「set count」を、アラームの音を設定する場合は「alarm」を、ダークテーマに切り替える場合は「dark theme」を、タイマーに戻る場合は左上の「POMODORO TIMER」をクリックしてください。</p>
+        </div>
+        <div id="set-count-container" class="set-count-container hide-contents">
+            <h1 id="set-count-h1" class="set-count-h1 d-3">セット数</h1>
+            <form action="" name="set-form" id="set-form">
+                <input type="text" class="input-set-text light-theme-placeholder" id="input-set-text" placeholder="セット数を入力してください">
+                <input type="text" name="dummy" style="display:none;">
+                <p id="set-error"></p>
+                <input type="button" id="input-set-decision" value="決定">
+            </form>
+        </div>
+        <div id="alarm-container" class="alarm-container hide-contents">
+            <h1 id="alarm-h1" class="alarm-h1">アラームの設定</h1>
+            <h2 class="sound-type">音の種類</h2>
+            <div class="alarm-type-btns">
+                <div class="alarm-btn-box">
+                    <input type="radio" name="radio" class="alarm-radio" id="radio1" checked>
+                    <label for="radio1" class="d-3">01</label>
+                </div>
+                <div class="alarm-btn-box">
+                    <input type="radio" name="radio" class="alarm-radio" id="radio2">
+                    <label for="radio2" class="d-3">02</label>
+                </div>
+                <div class="alarm-btn-box">
+                    <input type="radio" name="radio" class="alarm-radio" id="radio3">
+                    <label for="radio3" class="d-3">03</label>
+                </div>
+                <div class="alarm-btn-box">
+                    <input type="radio" name="radio" class="alarm-radio" id="radio4">
+                    <label for="radio4" class="d-3">04</label>
+                </div>
+                <div class="alarm-btn-box">
+                    <input type="radio" name="radio" class="alarm-radio" id="radio5">
+                    <label for="radio5" class="d-3">05</label>
+                </div>
+            </div>
+            <div class="volume-box">
+                <h2 class="volume">音量</h2>
+                <input type="range" id="volume-range" class="volume-range" value="50" min="0" max="100">
+            </div>
+            <div class="preview-box">
+                <h2 class="preview">プレビュー</h2>
+                <button type="button" class="fas" id="preview-button">&#xf04b;</button>
+            </div>
+        </div>
+        <div class="crosses-back">
+            <div class="y-box">
+                <div id="back-cross-y" class="back-cross-y slide-in-y d-8"></div>
+            </div>
+            <div class="back-cross-x">
+                <div id="line1" class="line1 slide-in-1 d-8"></div>
+                <div id="line2" class="line2 slide-in-2 d-8"></div>
+                <div id="line4" class="line4 slide-in-4 d-8"></div>
+                <div id="line6" class="line6 slide-in-6 d-8"></div>
+                <div id="line8" class="line8 slide-in-8 d-8"></div>
+                <div id="line9" class="line9 slide-in-9 d-8"></div>
+                <div id="line10" class="line10 slide-in-10 d-8"></div>
+                <div id="line11" class="line11 slide-in-11 d-8"></div>
+            </div>
+        </div>
+        <div class="crosses-overlay">
+            <div class="back-cross-x-o">
+                <div id="line3" class="line3 slide-in-3 d-8"></div>
+                <div id="line5" class="line5 slide-in-5 d-8"></div>
+                <div id="line7" class="line7 slide-in-7 d-8"></div>
+            </div>
+            <div id="cross1" class="cross1 hide-cross d-8"></div>
+            <div id="cross2" class="cross2 hide-cross d-8"></div>
+            <div id="cross3" class="cross3 hide-cross d-8"></div>
+            <div id="cross4" class="cross4 hide-cross d-8"></div>
+            <div id="cross5" class="cross5 hide-cross d-8"></div>
+            <div id="cross6" class="cross6 hide-cross d-8"></div>
+            <div id="cross7" class="cross7 hide-cross d-8"></div>
+            <div id="cross8" class="cross8 hide-cross d-8"></div>
+        </div>
+        <div class="intro">
+            <img id="intro-tomato" class="hide-contents" src="images/tomato.png" alt="赤トマト">
+            <p id="intro-timer" class="timer intro-timer">00:00.000</p>
+            <div id="bg-white" class="bg-white hide-white"></div>
+            <div class="bg-black"></div>
+        </div>
+    </div>
+    <script src="scripts/script.js"></script>
+    <script src="scripts/intro-animation.js"></script>
+</body>
+</html>
