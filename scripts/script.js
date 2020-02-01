@@ -155,8 +155,9 @@
    * @param {string} timerID 円の色を決めるためのタイマーID
    */
   function updateCircle(leftTime, timeToCountDown, timerID) {
-    timerCircleCanvas.setAttribute('width', circle2.clientWidth + 30);
-    timerCircleCanvas.setAttribute('height', circle2.clientHeight + 30);
+    let w = 15;
+    timerCircleCanvas.setAttribute('width', circle2.clientWidth + w * 2);
+    timerCircleCanvas.setAttribute('height', circle2.clientHeight + w * 2);
     timerCircleCtx.beginPath();
     let endAngle;
     if (timerID === 'timer25') {
@@ -165,10 +166,10 @@
       timerCircleCtx.strokeStyle = "#5DFF44";
     }
     endAngle = (360 - (360 * leftTime / timeToCountDown)) * Math.PI / 180;
-    timerCircleCtx.lineWidth = 15;
-    let x = circle2.clientWidth / 2 + 15;
-    let y = circle2.clientHeight / 2 + 15;
-    let radius = circle2.clientHeight / 2 + 7.5;
+    timerCircleCtx.lineWidth = w;
+    let x = circle2.clientWidth / 2 + w;
+    let y = circle2.clientHeight / 2 + w;
+    let radius = circle2.clientHeight / 2 + w / 2;
     timerCircleCtx.translate(x, y);
     timerCircleCtx.rotate(-90 * Math.PI / 180);
     timerCircleCtx.translate(-x, -y);
