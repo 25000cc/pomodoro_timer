@@ -36,7 +36,7 @@
       }
       isRunning = true;
       startStopBtn.innerHTML = "&#xf04d;"; // 四角ボタンに形を変える
-      btnText.innerHTML = "STOP<span style=\"margin-left:30px;\"></span>BUTTON";
+      btnText.innerHTML = "STOP BUTTON";
       startTime = Date.now();
     } else { // ストップを押したときの処理
       stopAllTimer();
