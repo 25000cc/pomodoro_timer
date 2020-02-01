@@ -1014,8 +1014,8 @@ ul {
 .hide-set-container-back { transform: translateX(15.26vw) }
 .hide-set-count { transform: translate(-50%, 101px) }
 .hide-cross { opacity: 0; transform: rotate(360deg); }
-.hide-left-line { transform: translateY(85px) }
-.hide-my-num { transform: translateX(12px) rotate(-90deg) }
+.hide-left-line { transform: translateY(14vh) }
+.hide-my-num { transform: translateX(1.8vh) rotate(-90deg) }
 .hide-cc-bottom-line { transform: translateX(-9.95vw) }
 .hide-cc-left-line{ transform: translateY(calc(-50vh + 112px)) }
 .hide-btn-text { transform: translateX(-20vw) }
