@@ -3,6 +3,11 @@
     line-height: 1;
 }
 
+@font-face {
+    font-family: '源ノ明朝';
+    src: url('font/SourceHanSerif-Bold.woff') format('woff');
+}
+
 html, body {
     height: calc(100% - 9.25vh)
 }
@@ -27,7 +32,7 @@ ul {
 
 /* status */
 .status, .status-sub-text, .menu-status {
-    font-family: "HGS明朝E", serif;
+    font-family: "HGS明朝E", '源ノ明朝', serif;
     letter-spacing: -0.054em;
     pointer-events: none;
 }
@@ -212,7 +217,7 @@ ul {
 }
 
 .btn-text {
-    font-family: "HGS明朝E", serif;
+    font-family: "HGS明朝E", '源ノ明朝', serif;
     font-size: 4vh;
     margin: 0;
     position: absolute;
