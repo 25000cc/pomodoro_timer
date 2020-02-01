@@ -38,12 +38,12 @@
     introTimerID;
 
   new Promise((resolve, reject) => {
+    introTimer.style.opacity = 1;
     setTimeout(() => {  // @keyframe introTimerAnime 待ち
       resolve();
     }, 1800);
   }).then(() => {
     return new Promise((resolve, reject) => {
-      introTimer.style.opacity = 1;
       introTimerID = setInterval(updateIntroTimer, 12); // タイマーを25:00.000まで更新
       introTomato.classList.remove('hide-contents'); // トマト画像がフェードイン、1.5s
       setTimeout(() => {
