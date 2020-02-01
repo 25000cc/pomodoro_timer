@@ -1,2 +1,2 @@
-# pomodoro_timer
-N予備校 動くWebページコンテスト 2019夏 作品
+# pomodoro timer
+N高 動くWebページコンテスト 2019夏 作品
