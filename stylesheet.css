@@ -979,15 +979,8 @@ ul {
 .intro-timer {
     opacity: 0;
     transform: translate(-50%, -50%) scale(1.00);
-    will-change: transform;
-    animation: introTimerAnime 2s cubic-bezier(.83,.03,.21,.98) 0.3s;
+    transition: 1.8s;
     z-index: 1;
-}
-
-@keyframes introTimerAnime {
-    0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1.0); opacity: 1; }
 }
 
 .bg-white {
@@ -1003,7 +996,7 @@ ul {
     will-change: transform;
 }
 
-.hide-intro-timer { opacity: 0; transform: translate(-50%, -50%) scale(0.75); }
+.hide-intro-timer { opacity: 0; }
 .hide-white { transform: translate(-50vw, 50vh) }
 .hide-title-back { transform: translateY(-101%) }
 .hide-title { transform: translate(-50%, 50%) }
